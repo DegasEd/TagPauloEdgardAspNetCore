@@ -1,0 +1,84 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29409.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1 - Application", "1 - Application", "{A9299CC7-BF94-453B-897B-3A7DF7F3CC68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagShop.Api", "TagShop.Api\TagShop.Api.csproj", "{FC480FB0-5233-401D-98F6-7028678C98F6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2 - Services", "2 - Services", "{1C7F807E-284C-40A6-A68B-D61F39C6BCBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagShop.Services", "TagShop.Services\TagShop.Services.csproj", "{94C686B1-914E-40F7-917D-F598D008AFB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Business", "3 - Business", "{1A6189EB-4BF3-4B98-A6EC-99ED685CBC22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagShop.Business", "TagShop.Business\TagShop.Business.csproj", "{91E20805-4771-4D9D-89C4-7856E704F6AA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Domain", "4 - Domain", "{4ADB58D9-0842-4FD2-BA43-0B0FDB25FF6E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagShop.Domain", "TagShop.Domain\TagShop.Domain.csproj", "{2CFAB874-274A-4192-8235-B8CDBE846947}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5 - Repository", "5 - Repository", "{900103E4-496D-4BBF-A8DE-D26D7699234D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagShop.Repository", "TagShop.Repository\TagShop.Repository.csproj", "{9FA185DA-EF60-494D-BABD-8CF32F960E89}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6 - Tests", "6 - Tests", "{3D90EA7F-7E5D-495F-9129-65F12C7CEB95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagShop.Tests", "TagShop.Tests\TagShop.Tests.csproj", "{14C0F32E-D7C6-4114-A278-49634FCBACC1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "7 - Integration", "7 - Integration", "{EBA74116-2159-4D95-97C2-91655FACCBD9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TagShop.Integration.AuthorizarApi", "TagShop.Integration.AuthorizarApi\TagShop.Integration.AuthorizarApi.csproj", "{08064626-B0B9-4462-864D-066943BEBED3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC480FB0-5233-401D-98F6-7028678C98F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC480FB0-5233-401D-98F6-7028678C98F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC480FB0-5233-401D-98F6-7028678C98F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC480FB0-5233-401D-98F6-7028678C98F6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{94C686B1-914E-40F7-917D-F598D008AFB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{94C686B1-914E-40F7-917D-F598D008AFB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{94C686B1-914E-40F7-917D-F598D008AFB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{94C686B1-914E-40F7-917D-F598D008AFB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E20805-4771-4D9D-89C4-7856E704F6AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E20805-4771-4D9D-89C4-7856E704F6AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E20805-4771-4D9D-89C4-7856E704F6AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E20805-4771-4D9D-89C4-7856E704F6AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2CFAB874-274A-4192-8235-B8CDBE846947}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2CFAB874-274A-4192-8235-B8CDBE846947}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2CFAB874-274A-4192-8235-B8CDBE846947}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2CFAB874-274A-4192-8235-B8CDBE846947}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FA185DA-EF60-494D-BABD-8CF32F960E89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FA185DA-EF60-494D-BABD-8CF32F960E89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FA185DA-EF60-494D-BABD-8CF32F960E89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FA185DA-EF60-494D-BABD-8CF32F960E89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14C0F32E-D7C6-4114-A278-49634FCBACC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14C0F32E-D7C6-4114-A278-49634FCBACC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14C0F32E-D7C6-4114-A278-49634FCBACC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14C0F32E-D7C6-4114-A278-49634FCBACC1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{08064626-B0B9-4462-864D-066943BEBED3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{08064626-B0B9-4462-864D-066943BEBED3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{08064626-B0B9-4462-864D-066943BEBED3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{08064626-B0B9-4462-864D-066943BEBED3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FC480FB0-5233-401D-98F6-7028678C98F6} = {A9299CC7-BF94-453B-897B-3A7DF7F3CC68}
+		{94C686B1-914E-40F7-917D-F598D008AFB0} = {1C7F807E-284C-40A6-A68B-D61F39C6BCBF}
+		{91E20805-4771-4D9D-89C4-7856E704F6AA} = {1A6189EB-4BF3-4B98-A6EC-99ED685CBC22}
+		{2CFAB874-274A-4192-8235-B8CDBE846947} = {4ADB58D9-0842-4FD2-BA43-0B0FDB25FF6E}
+		{9FA185DA-EF60-494D-BABD-8CF32F960E89} = {900103E4-496D-4BBF-A8DE-D26D7699234D}
+		{14C0F32E-D7C6-4114-A278-49634FCBACC1} = {3D90EA7F-7E5D-495F-9129-65F12C7CEB95}
+		{08064626-B0B9-4462-864D-066943BEBED3} = {EBA74116-2159-4D95-97C2-91655FACCBD9}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {73D92742-C19A-45A8-AB8B-D198DEEEECE9}
+	EndGlobalSection
+EndGlobal
