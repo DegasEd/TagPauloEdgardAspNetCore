@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Npgsql;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using TagShop.Domain.Abstract;
 using TagShop.Repository.Interfaces;
@@ -9,6 +12,7 @@ using Dapper.Contrib.Extensions;
 using Microsoft.Extensions.Configuration;
 using System.IO;
 using Npgsql;
+
 
 namespace TagShop.Repository
 {
@@ -43,8 +47,10 @@ namespace TagShop.Repository
             throw new NotImplementedException();
         }
 
-        public T Insert(T obj)
+        public T Insert(T obj, string query)
         {
+
+
             throw new NotImplementedException();
         }
 

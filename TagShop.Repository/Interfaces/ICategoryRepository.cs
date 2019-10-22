@@ -5,7 +5,7 @@ using TagShop.Domain.Models;
 
 namespace TagShop.Repository.Interfaces
 {
-    public interface ICategoryRepository : IRepositoryBase<Category>
+    public interface ICategoryRepository 
     {
     }
 }
