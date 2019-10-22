@@ -8,4 +8,9 @@
     <Folder Include="Validations\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Dapper.Contrib" Version="2.0.30" />
+    <PackageReference Include="FluentValidation" Version="8.5.0" />
+  </ItemGroup>
+
 </Project>
