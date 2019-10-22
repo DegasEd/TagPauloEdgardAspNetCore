@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TagShop.Domain.Abstract;
 
 namespace TagShop.Domain.Models
 {
-    public class Product : Entity
+    public class Product : BaseEntity
     {
         public Product()
         {
@@ -19,8 +20,5 @@ namespace TagShop.Domain.Models
         public decimal Price { get; set; }
         public int StockAmount { get; set; }
         public List<Image> Images { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
     }
 }
