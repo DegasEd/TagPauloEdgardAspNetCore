@@ -15,7 +15,7 @@ namespace TagShop.Repository.Interfaces
         T ChangeStatus(T obj, string query); 
         #endregion
 
-        List<T> GetAll(string query, DynamicParameters parameters);
+        List<T> GetAll(string query, DynamicParameters parameters = null);
 
 
     }
