@@ -21,12 +21,25 @@ namespace TagShop.Repository
  
         public Category ChangeStatus(Category obj)
         {
-            throw new NotImplementedException();
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@CategoryId",  obj.CategoryId, DbType.Guid);
+            parameters.Add("@IsActive",    obj.IsActive, DbType.Boolean);
+            parameters.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
+
+
+            var query = "UPDATE public.category SET  " +
+                        "is_active = @IsActive,      " +
+                        "updated_date = @UpdatedDate " +
+                        "WHERE category_id = @CategoryId";
+
+            var result = _repositoryBaseCategory.Insert(query, parameters);
+
+            return result;
         }
 
         public List<Category> GetAll()
         {
-            var query = string.Format("SELECT * FROM public.category ");
+            var query = "SELECT * FROM public.category ";
 
             var result = _repositoryBaseCategory.GetAll(query);
 
@@ -38,10 +51,10 @@ namespace TagShop.Repository
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@CategoryId", id, DbType.Guid);
 
-            var query = string.Format("SELECT * FROM public.category " +
-                                      "WHERE  id = @CategoryId ", parameters);
+            var query = "SELECT * FROM public.category    "+
+                        "WHERE  category_id = @CategoryId ";
 
-            var result = _repositoryBaseCategory.GetAll(query);
+            var result = _repositoryBaseCategory.GetAll(query, parameters);
 
             return result;
         }
@@ -56,10 +69,10 @@ namespace TagShop.Repository
             parameters.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
 
 
-            var query = string.Format("INSERT INTO public.category(category_id, description, is_active, created_date, updated_date) " +
-                                      "VALUES (@CategoryId, @Description, @IsActive, @CreatedDate, @UpdatedDate);", parameters);
+            var query = "INSERT INTO public.category(category_id, description, is_active, created_date, updated_date) " +
+                        "VALUES (@CategoryId, @Description, @IsActive, @CreatedDate, @UpdatedDate);";
 
-            var result = _repositoryBaseCategory.Insert(obj, query);
+            var result = _repositoryBaseCategory.Insert(query, parameters);
 
             return result;
         }
@@ -69,17 +82,15 @@ namespace TagShop.Repository
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@CategoryId",  obj.CategoryId,  DbType.Guid);
             parameters.Add("@Description", obj.Description, DbType.String);
-            parameters.Add("@IsActive",    obj.IsActive,    DbType.Boolean);
-            parameters.Add("@CreatedDate", obj.CreatedDate, DbType.DateTime);
             parameters.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
 
 
-            var query = string.Format("UPDATE public.category SET  " +
-                                      "description = @Description, " +
-                                      "updated_date = @UpdatedDate " +
-                                      "WHERE category_id = @CategoryId", parameters);
+            var query = "UPDATE public.category SET      "+
+                        "description = @Description,     "+
+                        "updated_date = @UpdatedDate     "+
+                        "WHERE category_id = @CategoryId ";
 
-            var result = _repositoryBaseCategory.Insert(obj, query);
+            var result = _repositoryBaseCategory.Insert(query, parameters);
 
             return result;
         }
