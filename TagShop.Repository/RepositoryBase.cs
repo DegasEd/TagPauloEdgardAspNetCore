@@ -30,10 +30,9 @@ namespace TagShop.Repository
             Conn = _connectionFactory.GetConnection(_configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public T ChangeStatus(T obj, string query)
+        public T ChangeStatus(string query, DynamicParameters parameters)
         {
-            Conn.Execute(query, obj);
-            return obj;
+            return Conn.ExecuteScalar<T>(query, parameters);
         }
 
         public List<T> GetAll(string query, DynamicParameters parameters = null)
