@@ -7,7 +7,6 @@ namespace TagShop.Domain.Models
 {
     public class CartItem : BaseEntity
     {
-        
         public string CartItemId { get; set; }
         public Product Product { get; set; }
         public int Amount { get; set; }

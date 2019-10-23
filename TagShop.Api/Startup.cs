@@ -72,7 +72,7 @@ namespace TagShop.Api
                 endpoints.MapControllers();
             });
 
-            
+
 
         }
     }
