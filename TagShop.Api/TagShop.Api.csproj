@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TagShop.Business\TagShop.Business.csproj" />
     <ProjectReference Include="..\TagShop.Domain\TagShop.Domain.csproj" />
     <ProjectReference Include="..\TagShop.Services\TagShop.Services.csproj" />
   </ItemGroup>
