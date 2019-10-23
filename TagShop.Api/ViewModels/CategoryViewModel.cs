@@ -7,13 +7,13 @@ namespace TagShop.Api.ViewModels
 {
     public class CategoryViewModel
     {
-        public long Id { get; protected set; }
-        public Guid Key { get; private set; }
+        public long Id { get;  set; }
+        public Guid Key { get; set; }
         public string CategoryId { get; set; }
         public string Description { get; set; }
-        public DateTime CreatedDate { get; private set; }
-        public DateTime UpdatedDate { get; private set; }
-        public bool IsActive { get; private set; }
+        public DateTime CreatedDate { get;  set; }
+        public DateTime UpdatedDate { get;  set; }
+        public bool IsActive { get;  set; }
 
     }
 }

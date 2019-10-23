@@ -11,6 +11,11 @@ namespace TagShop.Api.Controllers
     [ApiController]
     public class CartItemController : BaseController
     {
+        public CartItemController()
+        {
+
+        }
+
         // GET: api/CartItem
         /// <summary>
         /// 
