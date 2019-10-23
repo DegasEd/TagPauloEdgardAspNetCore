@@ -18,5 +18,6 @@ namespace TagShop.Domain.Models
         public decimal Price { get; set; }
         public int StockAmount { get; set; }
         public List<Image> Images { get; set; }
+
     }
 }

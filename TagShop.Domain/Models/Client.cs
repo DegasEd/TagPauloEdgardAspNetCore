@@ -18,5 +18,6 @@ namespace TagShop.Domain.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Phone { get; set; }
+
     }
 }

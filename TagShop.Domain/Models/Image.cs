@@ -10,5 +10,6 @@ namespace TagShop.Domain.Models
         
         public string PoductId { get; set; }
         public byte[] Photo { get; set; }
+
     }
 }

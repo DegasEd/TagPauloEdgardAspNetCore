@@ -11,5 +11,6 @@ namespace TagShop.Domain.Models
         public long ClientId { get; set; }
         public List<CartItem> CartItems { get; set; }
 
+
     }
 }

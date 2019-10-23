@@ -12,5 +12,6 @@ namespace TagShop.Domain.Models
         public long ProductId { get; set; }
         public int Amount { get; set; }
         public decimal UnitaryValue { get; set; }
+
     }
 }

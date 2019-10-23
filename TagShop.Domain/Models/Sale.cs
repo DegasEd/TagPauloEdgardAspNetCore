@@ -21,5 +21,6 @@ namespace TagShop.Domain.Models
         public decimal Cofins { get; set; }
         public List<SaleItem> SaleItems { get; set; }
 
+
     }
 }
