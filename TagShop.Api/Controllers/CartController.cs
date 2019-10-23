@@ -9,18 +9,24 @@ using TagShop.Services.Interfaces;
 
 namespace TagShop.Api.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CartController : BaseController
     {
         private readonly ICartServices _cartService;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cartService"></param>
         public CartController(ICartServices cartService)
         {
             _cartService = cartService;
         }
 
-        // GET: api/Cart
         /// <summary>
         /// 
         /// </summary>
@@ -31,7 +37,6 @@ namespace TagShop.Api.Controllers
             return new List<CartViewModel>();
         }
 
-        // GET: api/Cart/5
         /// <summary>
         /// 
         /// </summary>
@@ -43,7 +48,6 @@ namespace TagShop.Api.Controllers
             return "value";
         }
 
-        // POST: api/Cart
         /// <summary>
         /// 
         /// </summary>
@@ -53,7 +57,6 @@ namespace TagShop.Api.Controllers
         {
         }
 
-        // PUT: api/Cart/5
         /// <summary>
         /// 
         /// </summary>
@@ -64,7 +67,6 @@ namespace TagShop.Api.Controllers
         {
         }
 
-        // DELETE: api/ApiWithActions/5
         /// <summary>
         /// 
         /// </summary>

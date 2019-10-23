@@ -26,9 +26,9 @@ namespace TagShop.Services
             return _categoryRepository.GetAll();
         }
 
-        public Category GetById(int id)
+        public Category GetById(Guid key)
         {
-            return _categoryRepository.GetById(id).ToList().FirstOrDefault(); 
+            return _categoryRepository.GetById(key).ToList().FirstOrDefault(); 
         }
 
         public Category Insert(Category obj)

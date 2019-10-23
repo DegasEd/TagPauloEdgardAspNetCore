@@ -8,7 +8,6 @@ namespace TagShop.Domain.Models
     public class Client : BaseEntity
     {
         
-        public string ClientId { get; set; }
         public string Cpf { get; set; }
         public string Name { get; set; }
         public DateTime? BirthDate { get; set; }

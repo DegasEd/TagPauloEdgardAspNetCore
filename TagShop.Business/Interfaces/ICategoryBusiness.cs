@@ -11,7 +11,7 @@ namespace TagShop.Business.Interfaces
         Category Update(Category obj);
         Category ChangeStatus(Category obj);
         List<Category> GetAll();
-        List<Category> GetById(int id);
+        List<Category> GetById(Guid key);
 
 
     }

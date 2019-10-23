@@ -8,8 +8,8 @@ namespace TagShop.Domain.Models
     public class SaleItem : BaseEntity
     {
         
-        public string SaleItemId { get; set; }
-        public Product Product { get; set; }
+        public long SaleId { get; set; }
+        public long ProductId { get; set; }
         public int Amount { get; set; }
         public decimal UnitaryValue { get; set; }
     }

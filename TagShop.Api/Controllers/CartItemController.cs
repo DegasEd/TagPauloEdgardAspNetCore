@@ -7,16 +7,21 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TagShop.Api.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CartItemController : BaseController
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public CartItemController()
         {
 
         }
 
-        // GET: api/CartItem
         /// <summary>
         /// 
         /// </summary>
@@ -27,7 +32,6 @@ namespace TagShop.Api.Controllers
             return new string[] { "value1", "value2" };
         }
 
-        // GET: api/CartItem/5
         /// <summary>
         /// 
         /// </summary>
@@ -39,7 +43,6 @@ namespace TagShop.Api.Controllers
             return "value";
         }
 
-        // POST: api/CartItem
         /// <summary>
         /// 
         /// </summary>
@@ -49,7 +52,6 @@ namespace TagShop.Api.Controllers
         {
         }
 
-        // PUT: api/CartItem/5
         /// <summary>
         /// 
         /// </summary>
@@ -60,7 +62,6 @@ namespace TagShop.Api.Controllers
         {
         }
 
-        // DELETE: api/ApiWithActions/5
         /// <summary>
         /// 
         /// </summary>

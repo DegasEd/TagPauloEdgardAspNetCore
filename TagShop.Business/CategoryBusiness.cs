@@ -44,9 +44,9 @@ namespace TagShop.Business
 
         }
 
-        public List<Category> GetById(int id)
+        public List<Category> GetById(Guid key)
         {
-            return _categoryRepository.GetById(id);
+            return _categoryRepository.GetById(key);
 
         }
 

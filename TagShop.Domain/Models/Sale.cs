@@ -9,13 +9,11 @@ namespace TagShop.Domain.Models
     {
         public Sale()
         {
-            Client = new Client();
             SaleItems = new List<SaleItem>();
         }
         
-        public string SaleId { get; set; }
         public string Invoice { get; set; }
-        public Client Client { get; set; }
+        public long ClientId { get; set; }
         public DateTime SaleDate { get; set; }
         public decimal TotalPurchase { get; set; }
         public decimal Icms { get; set; }

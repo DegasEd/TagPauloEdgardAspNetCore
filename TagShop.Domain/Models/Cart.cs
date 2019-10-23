@@ -7,14 +7,8 @@ namespace TagShop.Domain.Models
 {
     public class Cart : BaseEntity
     {
-        public Cart()
-        {
-            Client = new Client();
-        }
-
         
-        public string CartId { get; set; }
-        public Client Client { get; set; }
+        public long ClientId { get; set; }
         public List<CartItem> CartItems { get; set; }
 
     }

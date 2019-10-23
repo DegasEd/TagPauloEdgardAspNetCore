@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TagShop.Api.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class BaseController : ControllerBase
     {
     }

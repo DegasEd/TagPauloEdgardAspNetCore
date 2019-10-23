@@ -9,12 +9,10 @@ namespace TagShop.Domain.Models
     {
         public Product()
         {
-            Category = new Category();
             Images = new List<Image>();
         }
         
-        public string ProductId { get; set; }
-        public Category Category { get; set; }
+        public long CategoryId { get; set; }
         public string Description { get; set; }
         public string Detail { get; set; }
         public decimal Price { get; set; }
