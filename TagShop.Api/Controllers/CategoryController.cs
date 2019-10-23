@@ -7,12 +7,18 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace TagShop.Api.Controllers
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : BaseController
     {
         
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Category
         [HttpGet]
         public IEnumerable<string> GetAll()

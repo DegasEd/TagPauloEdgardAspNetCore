@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TagShop.Domain.Models;
@@ -6,15 +8,15 @@ using TagShop.Repository.Interfaces;
 
 namespace TagShop.Repository
 {
-    public class CategoryRepository
+    public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
     {
         private readonly IRepositoryBase<Category> _repositoryBaseCategory;
 
-        public CategoryRepository(IRepositoryBase<Category> repositoryBaseCategory)
+        public CategoryRepository(IConnectionFactory connectionFactory, IConfiguration configuration, ILogger<RepositoryBase<Category>> logger) : base(connectionFactory, configuration, logger)
         {
-            _repositoryBaseCategory = repositoryBaseCategory;
         }
 
+ 
         public Category ChangeStatus(Category obj)
         {
             throw new NotImplementedException();

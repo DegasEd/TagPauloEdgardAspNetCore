@@ -1,17 +1,13 @@
-﻿using Microsoft.Extensions.Configuration;
+﻿using Dapper;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Text;
+using System.Linq;
 using TagShop.Domain.Abstract;
 using TagShop.Repository.Interfaces;
-using System.Data.SqlClient;
-using System.Linq;
-using Dapper.Contrib.Extensions;
-using Microsoft.Extensions.Configuration;
-using System.IO;
-using Npgsql;
 
 
 namespace TagShop.Repository
@@ -19,44 +15,69 @@ namespace TagShop.Repository
     public class RepositoryBase<T> : IRepositoryBase<T> where T : BaseEntity
     {
         private readonly IConnectionFactory _connectionFactory;
+
         private readonly IConfiguration _configuration;
 
-        protected readonly NpgsqlConnection conn;
+        protected readonly NpgsqlConnection Conn;
 
-        public RepositoryBase(IConnectionFactory connectionFactory, IConfiguration configuration)
+        protected readonly ILogger<RepositoryBase<T>> _logger;
+
+        public RepositoryBase(IConnectionFactory connectionFactory, IConfiguration configuration, ILogger<RepositoryBase<T>> logger)
         {
             _connectionFactory = connectionFactory;
             _configuration = configuration;
-
-            conn = _connectionFactory.GetConnection(_configuration.GetConnectionString("DefaultConnection"));
-            conn.Open();
+            _logger = logger;
+            Conn = _connectionFactory.GetConnection(_configuration.GetConnectionString("DefaultConnection"));
         }
 
-        public T ChangeStatus(T obj)
+        public T ChangeStatus(T obj, string query)
         {
-            throw new NotImplementedException();
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
+
+            Conn.Execute(query, obj);
+            return obj;
         }
 
-        public List<T> GetAll()
+        public List<T> GetAll(string query, DynamicParameters parameters = null)
         {
-            throw new NotImplementedException();
+            try
+            {
+                DefaultTypeMap.MatchNamesWithUnderscores = true;
+
+                if (parameters == null)
+                    return Conn.Query<T>(query).ToList();
+
+                return Conn.Query<T>(query, parameters).ToList();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, ex.Message);
+                throw;
+            }
         }
 
-        public T GetById(int id)
+         public T Insert(T obj, string query)
         {
-            throw new NotImplementedException();
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
+
+            Conn.Execute(query, obj);
+            return obj;            
         }
 
-        public T Insert(T obj, string query)
+        public T Update(T obj, string query)
         {
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
 
-
-            throw new NotImplementedException();
+            Conn.Execute(query, obj);
+            return obj;
         }
 
-        public T Update(T obj)
+        public void Dispose()
         {
-            throw new NotImplementedException();
+            Conn.Close();
+            Conn.Dispose();
+            GC.SuppressFinalize(this);
         }
+
     }
 }
