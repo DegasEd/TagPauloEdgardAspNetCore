@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TagShop.Domain.Abstract;
@@ -9,13 +10,13 @@ namespace TagShop.Repository.Interfaces
     public interface IRepositoryBase<T> where T : BaseEntity
     {
         #region CRUD
-        T Insert(T obj, string query);
-        T Update(T obj);
-        T ChangeStatus(T obj); 
+        T Insert(string query, DynamicParameters parameters);
+        T Update(string query, DynamicParameters parameters);
+        T ChangeStatus(string query, DynamicParameters parameters); 
         #endregion
 
-        List<T> GetAll();
-        T GetById(int id);
+        List<T> GetAll(string query, DynamicParameters parameters = null);
+
 
     }
 }

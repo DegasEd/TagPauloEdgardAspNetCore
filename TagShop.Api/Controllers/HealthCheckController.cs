@@ -12,7 +12,7 @@ namespace TagShop.Api.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class HealthCheckController : ControllerBase
+    public class HealthCheckController : BaseController
     {
         /// <summary>
         /// Returns the current date and time

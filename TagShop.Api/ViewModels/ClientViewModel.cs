@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using TagShop.Domain.Abstract;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace TagShop.Domain.Models
+namespace TagShop.Api.ViewModels
 {
-    public class Client : BaseEntity
+    public class ClientViewModel
     {
-        
+        public long Id { get; protected set; }
+        public Guid Key { get; private set; }
+        public string ClientId { get; set; }
         public string Cpf { get; set; }
         public string Name { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -18,6 +20,8 @@ namespace TagShop.Domain.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Phone { get; set; }
-
+        public DateTime CreatedDate { get; private set; }
+        public DateTime UpdatedDate { get; private set; }
+        public bool IsActive { get; private set; }
     }
 }

@@ -8,7 +8,8 @@ namespace TagShop.Domain.Models
     public class Image : BaseEntity
     {
         
-        public string ImageId { get; set; }
+        public string PoductId { get; set; }
         public byte[] Photo { get; set; }
+
     }
 }

@@ -19,4 +19,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0-rc4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TagShop.Business\TagShop.Business.csproj" />
+    <ProjectReference Include="..\TagShop.Domain\TagShop.Domain.csproj" />
+    <ProjectReference Include="..\TagShop.Services\TagShop.Services.csproj" />
+  </ItemGroup>
+
 </Project>

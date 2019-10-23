@@ -14,6 +14,7 @@ namespace TagShop.Domain.Abstract
             CreatedDate = DateTime.Now;
             UpdatedDate = DateTime.Now;
             IsActive = true;
+
         }
         public void SetUpdateDate()
         {
