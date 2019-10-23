@@ -58,7 +58,7 @@ namespace TagShop.Api.Controllers
         /// <param name="id">Id of Category</param>
         /// <returns>CategoryViewModel by id</returns>
         [HttpGet("{id}")]
-        public ActionResult<CategoryViewModel> Get(int id)
+        public ActionResult<CategoryViewModel> Get3(int id)
         {
             var resultService = _categoryServices.GetById(id);
 
