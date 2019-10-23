@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TagShop.Api.ViewModels;
+using TagShop.Services.Interfaces;
 
 namespace TagShop.Api.Controllers
 {
@@ -12,6 +13,12 @@ namespace TagShop.Api.Controllers
     [ApiController]
     public class CartController : BaseController
     {
+        private readonly ICartServices _cartService;
+
+        public CartController(ICartServices cartService)
+        {
+            _cartService = cartService;
+        }
 
         // GET: api/Cart
         /// <summary>

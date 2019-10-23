@@ -33,6 +33,8 @@ namespace TagShop.Repository
         public T ChangeStatus(string query, DynamicParameters parameters)
         {
             return Conn.ExecuteScalar<T>(query, parameters);
+            var result = Conn.ExecuteScalar<T>(query, parameters);
+            return result;
         }
 
         public List<T> GetAll(string query, DynamicParameters parameters = null)
