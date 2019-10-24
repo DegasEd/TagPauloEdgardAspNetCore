@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TagShop.Api.ViewModels
+namespace TagShop.Api.ViewModels.Categories
 {
     /// <summary>
     /// 
     /// </summary>
-    public class CategoryViewModel
+    public class ResultCategoryViewModel
     {
         public long Id { get;  set; }
         public Guid Key { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TagShop.Api.ViewModels.Categories;
 
 namespace TagShop.Api.ViewModels
 {
@@ -9,14 +10,14 @@ namespace TagShop.Api.ViewModels
     {
         public ProductViewModel()
         {
-            Category = new CategoryViewModel();
+            Category = new ResultCategoryViewModel();
             Images = new List<ImageViewModel>();
         }
 
         public long Id { get; protected set; }
         public Guid Key { get; private set; }
         public string ProductId { get; set; }
-        public CategoryViewModel Category { get; set; }
+        public ResultCategoryViewModel Category { get; set; }
         public string Description { get; set; }
         public string Detail { get; set; }
         public decimal Price { get; set; }

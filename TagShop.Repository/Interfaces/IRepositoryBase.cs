@@ -11,7 +11,7 @@ namespace TagShop.Repository.Interfaces
     {
         #region CRUD
         T Insert(string query, DynamicParameters parameters);
-        T Update(string query, DynamicParameters parameters);
+        T Update(string query, DynamicParameters parameter);
         T ChangeStatus(string query, DynamicParameters parameters); 
         #endregion
 

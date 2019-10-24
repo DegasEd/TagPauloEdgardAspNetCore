@@ -33,6 +33,7 @@ namespace TagShop.Business
         public Category ChangeStatus(Category obj)
         {
             obj.ChangeStatus();
+            obj.SetUpdateDate();
 
             return _categoryRepository.ChangeStatus(obj);
 

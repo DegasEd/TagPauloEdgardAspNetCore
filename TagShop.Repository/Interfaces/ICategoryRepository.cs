@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dapper;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TagShop.Domain.Models;

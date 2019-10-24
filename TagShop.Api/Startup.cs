@@ -6,6 +6,7 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using TagShop.Api.AutoMapper;
 using TagShop.Business;
 using TagShop.Business.Interfaces;
 using TagShop.Repository;
@@ -47,6 +48,10 @@ namespace TagShop.Api
 
         public void DependencyInjection(IServiceCollection services)
         {
+            // AutoMapper
+            var mapperConfig = AutoMapperConfig.RegisterMappings();
+            services.AddSingleton(mapperConfig.CreateMapper());
+
             services.AddSingleton<IConnectionFactory, ConnectionFactory>();
             services.AddSingleton<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICategoryBusiness, CategoryBusiness>();
