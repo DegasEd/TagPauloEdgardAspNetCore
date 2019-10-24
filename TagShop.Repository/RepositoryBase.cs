@@ -32,6 +32,8 @@ namespace TagShop.Repository
 
         public T ChangeStatus(string query, DynamicParameters parameters)
         {
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
+
             return Conn.Query<T>(query, parameters).ToList().FirstOrDefault();            
         }
 
@@ -39,6 +41,8 @@ namespace TagShop.Repository
         {
             try
             {
+                DefaultTypeMap.MatchNamesWithUnderscores = true;
+
                 if (parameters == null)
                     return Conn.Query<T>(query).ToList();
 
@@ -62,6 +66,8 @@ namespace TagShop.Repository
 
         public T Update(string query, DynamicParameters parameters)
         {
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
+
             return Conn.Query<T>(query, parameters).ToList().FirstOrDefault();
         }
 

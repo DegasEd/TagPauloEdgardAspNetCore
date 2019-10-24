@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TagShop.Api.ViewModels.Customers;
+using TagShop.Domain.Models;
+using TagShop.Services.Interfaces;
 
 namespace TagShop.Api.Controllers
 {
@@ -14,14 +18,30 @@ namespace TagShop.Api.Controllers
     [ApiController]
     public class ClientController : BaseController
     {
+        private readonly IClientServices _clientServices;
+        private readonly IMapper _mapper;
+
+        /// <summary>
+        /// Método construtor da Client Controller
+        /// </summary>
+        /// <param name="clientServices">Interface de Serviço de Cliente</param>
+        /// <param name="mapper">Utilizado para o AutoMapper</param>
+        public ClientController(IClientServices clientServices, IMapper mapper)
+        {
+            _clientServices = clientServices;
+            _mapper = mapper;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<string> GetAll()
+        public IEnumerable<ClientViewModel> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            var resultService = _clientServices.GetAll();
+
+            return _mapper.Map<List<ClientViewModel>>(resultService);
         }
 
         /// <summary>
@@ -29,10 +49,12 @@ namespace TagShop.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        public string Get4(int id)
+        [HttpGet("{key}")]
+        public ClientViewModel Get(Guid key)
         {
-            return "value";
+            var resultService = _clientServices.GetById(key);
+
+            return _mapper.Map<ClientViewModel>(resultService);
         }
 
         /// <summary>
@@ -40,8 +62,11 @@ namespace TagShop.Api.Controllers
         /// </summary>
         /// <param name="value"></param>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<ClientViewModel> Post([FromBody] CreateClientViewModel client)
         {
+            var resultServices = _clientServices.Insert(_mapper.Map<Client>(client));
+
+            return _mapper.Map<ClientViewModel>(resultServices);
         }
 
         /// <summary>
@@ -49,7 +74,8 @@ namespace TagShop.Api.Controllers
         /// </summary>
         /// <param name="id"></param>
         /// <param name="value"></param>
-        [HttpPut("{id}")]
+        [Route("update")]
+        [HttpPut]
         public void Put(int id, [FromBody] string value)
         {
         }
@@ -58,9 +84,13 @@ namespace TagShop.Api.Controllers
         /// 
         /// </summary>
         /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [Route("changestatus")]
+        [HttpPut]
+        public ActionResult<ClientViewModel> ChangeStatus(Guid key)
         {
+            var resultService = _clientServices.ChangeStatus(key);
+
+            return _mapper.Map<ClientViewModel>(resultService);
         }
     }
 }

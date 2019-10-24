@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace TagShop.Api.ViewModels
+namespace TagShop.Api.ViewModels.Customers
 {
+    /// <summary>
+    /// ClientViewModel - Para retorno completo
+    /// </summary>
     public class ClientViewModel
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public long Id { get; protected set; }
         public Guid Key { get; private set; }
-        public string ClientId { get; set; }
         public string Cpf { get; set; }
         public string Name { get; set; }
         public DateTime? BirthDate { get; set; }
