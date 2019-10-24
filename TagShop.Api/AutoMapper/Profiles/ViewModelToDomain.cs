@@ -10,10 +10,10 @@ namespace TagShop.Api.AutoMapper.Profiles
         public ViewModelToDomain()
         {
             CreateMap<CategoryViewModel, Category>();
-            CreateMap<CreateCategoryViewModel, Category>();
+            CreateMap<CreateCategoryViewModel, Category>().ForMember(c => c.Description, d => d.MapFrom(map => map.Description));
 
         }
 
-        
+
     }
 }

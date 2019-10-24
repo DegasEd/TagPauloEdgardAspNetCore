@@ -7,6 +7,6 @@ namespace TagShop.Api.ViewModels.Categories
 {
     public class CreateCategoryViewModel
     {
-        public string Descricao { get; set; }
+        public string Description { get; set; }
     }
 }

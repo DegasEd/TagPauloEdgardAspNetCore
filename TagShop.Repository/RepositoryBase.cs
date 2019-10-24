@@ -53,6 +53,8 @@ namespace TagShop.Repository
 
          public T Insert(string query, DynamicParameters parameters)
         {
+            DefaultTypeMap.MatchNamesWithUnderscores = true;
+
             var varDoPaulo = Conn.Query<T>(query, parameters).ToList().FirstOrDefault();
 
             return varDoPaulo;
