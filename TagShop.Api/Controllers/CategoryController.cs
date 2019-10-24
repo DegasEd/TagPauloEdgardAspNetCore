@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TagShop.Api.ViewModels;
+using TagShop.Api.ViewModels.Categories;
 using TagShop.Domain.Models;
 using TagShop.Services.Interfaces;
 
@@ -20,14 +22,16 @@ namespace TagShop.Api.Controllers
     public class CategoryController : BaseController
     {
         private readonly ICategoryServices _categoryServices;
+        private readonly IMapper _mapper;
 
         /// <summary>
         /// 
         /// </summary>
         /// <param name="categoryServices"></param>
-        public CategoryController(ICategoryServices categoryServices)
+        public CategoryController(ICategoryServices categoryServices, IMapper mapper)
         {
             _categoryServices = categoryServices;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -37,23 +41,10 @@ namespace TagShop.Api.Controllers
         [HttpGet]
         public ActionResult<List<CategoryViewModel>> GetAll()
         {
-            var result = new List<CategoryViewModel>();
-
             var resultService = _categoryServices.GetAll();
 
-            resultService.ForEach(c =>
-            {
-                result.Add(new CategoryViewModel()
-                {
-                    Id = c.Id,
-                    Key = c.Key,
-                    CreatedDate = c.CreatedDate,
-                    Description = c.Description,
-                    IsActive = c.IsActive,
-                    UpdatedDate = c.UpdatedDate
-                });
-            });
-            return result;
+            
+            return _mapper.Map<List<CategoryViewModel>>(resultService);
         }
 
         /// <summary>
@@ -66,15 +57,7 @@ namespace TagShop.Api.Controllers
         {
             var resultService = _categoryServices.GetById(key);
 
-            return new CategoryViewModel()
-            {
-                Id = resultService.Id,
-                Key = resultService.Key,
-                CreatedDate = resultService.CreatedDate,
-                Description = resultService.Description,
-                IsActive = resultService.IsActive,                
-                UpdatedDate = resultService.UpdatedDate
-            };
+            return _mapper.Map<CategoryViewModel>(resultService);
         }
 
        /// <summary>
@@ -83,22 +66,11 @@ namespace TagShop.Api.Controllers
        /// <param name="category"></param>
        /// <returns></returns>
         [HttpPost]
-        public ActionResult<CategoryViewModel> Post(CategoryViewModel category)
+        public ActionResult<CategoryViewModel> Post(CreateCategoryViewModel category)
         {
-            var resultService = _categoryServices.Insert(new Category()
-            {
-                Description = category.Description,
-            });
+            var resultService = _categoryServices.Insert(_mapper.Map<Category>(category));
 
-            return new CategoryViewModel() 
-            {
-                Id = resultService.Id,
-                Key = resultService.Key,
-                CreatedDate = resultService.CreatedDate,
-                Description = resultService.Description,
-                IsActive = resultService.IsActive,
-                UpdatedDate = resultService.UpdatedDate
-            };
+            return _mapper.Map<CategoryViewModel>(resultService);
 
         }
 
@@ -109,19 +81,11 @@ namespace TagShop.Api.Controllers
         /// <returns></returns>
         [Route("update")]
         [HttpPut]
-        public ActionResult<CategoryViewModel> Put(CategoryViewModel category)
+        public ActionResult<CategoryViewModel> Put(CreateCategoryViewModel category)
         {
-            var resultService = _categoryServices.Update(new Category(category.Id, category.Key, category.Description));
-            
-            return new CategoryViewModel()
-            {
-                Id = resultService.Id,
-                Key = resultService.Key,
-                CreatedDate = resultService.CreatedDate,
-                Description = resultService.Description,
-                IsActive = resultService.IsActive,
-                UpdatedDate = resultService.UpdatedDate
-            };
+            var resultService = _categoryServices.Update(_mapper.Map<Category>(category));
+
+            return _mapper.Map<CategoryViewModel>(resultService);
         }
 
         /// <summary>
@@ -133,17 +97,9 @@ namespace TagShop.Api.Controllers
         [HttpPut]
         public ActionResult<CategoryViewModel> ChangeStatus(CategoryViewModel category)
         {
-            var resultService = _categoryServices.ChangeStatus(new Category(category.Id, category.Key));
+            var resultService = _categoryServices.ChangeStatus(_mapper.Map<Category>(category));
 
-            return new CategoryViewModel()
-            {
-                Id = resultService.Id,
-                Key = resultService.Key,
-                CreatedDate = resultService.CreatedDate,
-                Description = resultService.Description,
-                IsActive = resultService.IsActive,
-                UpdatedDate = resultService.UpdatedDate
-            };
+            return _mapper.Map<CategoryViewModel>(resultService);
         }
 
 

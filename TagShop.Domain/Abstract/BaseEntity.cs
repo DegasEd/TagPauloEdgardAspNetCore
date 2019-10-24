@@ -32,8 +32,8 @@ namespace TagShop.Domain.Abstract
         [Key]
         public long Id { get; protected set; }
         public Guid Key { get; protected set; }
-        public DateTime CreatedDate { get; private set; }
-        public DateTime UpdatedDate { get; private set; }
+        public DateTime CreatedDate { get; protected set; }
+        public DateTime UpdatedDate { get; protected set; }
         public bool IsActive { get; private set; }
     }
 }

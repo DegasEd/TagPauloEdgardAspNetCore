@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TagShop.Api.ViewModels.Categories;
 
 namespace TagShop.Api.ViewModels
 {

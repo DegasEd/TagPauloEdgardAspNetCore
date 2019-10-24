@@ -53,7 +53,9 @@ namespace TagShop.Repository
 
          public T Insert(string query, DynamicParameters parameters)
         {
-            return Conn.Query<T>(query, parameters).ToList().FirstOrDefault();
+            var varDoPaulo = Conn.Query<T>(query, parameters).ToList().FirstOrDefault();
+
+            return varDoPaulo;
         }
 
         public T Update(string query, DynamicParameters parameters)

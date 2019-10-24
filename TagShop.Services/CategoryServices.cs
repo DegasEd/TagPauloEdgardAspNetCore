@@ -11,6 +11,7 @@ namespace TagShop.Services
     public class CategoryServices : ICategoryServices
     {
         private readonly ICategoryBusiness _categoryBusiness;
+        
         public CategoryServices(ICategoryBusiness categoryBusiness)
         {
             _categoryBusiness = categoryBusiness;

@@ -13,13 +13,9 @@ namespace TagShop.Domain.Models
 
         }
 
-        public Category(long id, Guid key, String description)
+        public Category(string description)
         {
-            Id = id;
-            Key = key;
             Description = description;
-
-
         }
 
         public Category(long id, Guid key)
