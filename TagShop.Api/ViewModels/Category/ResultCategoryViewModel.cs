@@ -8,7 +8,7 @@ namespace TagShop.Api.ViewModels.Categories
     /// <summary>
     /// 
     /// </summary>
-    public class CategoryViewModel
+    public class ResultCategoryViewModel
     {
         public long Id { get;  set; }
         public Guid Key { get; set; }

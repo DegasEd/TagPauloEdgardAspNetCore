@@ -9,7 +9,7 @@ namespace TagShop.Api.AutoMapper.Profiles
     {
         public ViewModelToDomain()
         {
-            CreateMap<CategoryViewModel, Category>();
+            CreateMap<ResultCategoryViewModel, Category>();
             CreateMap<CreateCategoryViewModel, Category>();
 
         }
