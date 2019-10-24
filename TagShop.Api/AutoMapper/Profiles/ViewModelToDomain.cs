@@ -9,11 +9,11 @@ namespace TagShop.Api.AutoMapper.Profiles
     {
         public ViewModelToDomain()
         {
-            CreateMap<ResultCategoryViewModel, Category>();
-            CreateMap<CreateCategoryViewModel, Category>();
+            CreateMap<CategoryViewModel, Category>();
+            CreateMap<CreateCategoryViewModel, Category>().ForMember(c => c.Description, d => d.MapFrom(map => map.Description));
 
         }
 
-        
+
     }
 }
