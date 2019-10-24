@@ -111,11 +111,8 @@ namespace TagShop.Api.Controllers
         [HttpPut]
         public ActionResult<CategoryViewModel> Put(CategoryViewModel category)
         {
-            var resultService = _categoryServices.Update(new Category()
-            {
-                Description = category.Description,
-            });
-
+            var resultService = _categoryServices.Update(new Category(category.Id, category.Key, category.Description));
+            
             return new CategoryViewModel()
             {
                 Id = resultService.Id,
@@ -136,10 +133,7 @@ namespace TagShop.Api.Controllers
         [HttpPut]
         public ActionResult<CategoryViewModel> ChangeStatus(CategoryViewModel category)
         {
-            var resultService = _categoryServices.ChangeStatus(new Category()
-            {
-                Description = category.Description
-            });
+            var resultService = _categoryServices.ChangeStatus(new Category(category.Id, category.Key));
 
             return new CategoryViewModel()
             {

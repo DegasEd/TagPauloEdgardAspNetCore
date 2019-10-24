@@ -12,7 +12,7 @@ namespace TagShop.Repository
 {
     public class CategoryRepository : RepositoryBase<Category>, ICategoryRepository
     {
-        private readonly IRepositoryBase<Category> _repositoryBaseCategory;
+        private readonly IRepositoryBase<Category> _repositoryBase;
 
         public CategoryRepository(IConnectionFactory connectionFactory, IConfiguration configuration, ILogger<RepositoryBase<Category>> logger) : base(connectionFactory, configuration, logger)
         {
@@ -30,18 +30,17 @@ namespace TagShop.Repository
             var query = "UPDATE public.category SET  " +
                         "is_active = @IsActive,      " +
                         "updated_date = @UpdatedDate " +
-                        "WHERE key = @Key            " ;
+                        "WHERE key = @Key    RETURNING *; ";
 
-            var result = _repositoryBaseCategory.Insert(query, parameters);
+            return ChangeStatus(query, parameters);
 
-            return result;
         }
 
         public List<Category> GetAll()
         {
             var query = "SELECT * FROM public.category ";
 
-            var result = _repositoryBaseCategory.GetAll(query);
+            var result = GetAll(query);
 
             return result;
         }
@@ -51,46 +50,47 @@ namespace TagShop.Repository
             DynamicParameters parameters = new DynamicParameters();
             parameters.Add("@Key", key, DbType.Guid);
 
+
             var query = "SELECT * FROM public.category    "+
                         "WHERE  key = @Key ";
 
-            var result = _repositoryBaseCategory.GetAll(query, parameters);
+            var result = GetAll(query, parameters);
 
             return result;
         }
 
         public Category Insert(Category obj)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Key",         obj.Key,         DbType.Guid);
-            parameters.Add("@Description", obj.Description, DbType.String);
-            parameters.Add("@IsActive",    obj.IsActive,    DbType.Boolean);
-            parameters.Add("@CreatedDate", obj.CreatedDate, DbType.DateTime);
-            parameters.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
+            DynamicParameters parameter = new DynamicParameters();
 
+            parameter.Add("@Key",         obj.Key, DbType.Guid);
+            parameter.Add("@Description", obj.Description, DbType.String);
+            parameter.Add("@IsActive",    obj.IsActive, DbType.Boolean);
+            parameter.Add("@CreatedDate", obj.CreatedDate, DbType.DateTime);
+            parameter.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
 
-            var query = "INSERT INTO public.category(key, description, is_active, created_date, updated_date) " +
-                        "VALUES (@Key, @Description, @IsActive, @CreatedDate, @UpdatedDate);";
+            var query = @"INSERT INTO public.category(key, description, is_active, created_date, updated_date) " +
+                        "VALUES (@Key, @Description, @IsActive, @CreatedDate, @UpdatedDate) RETURNING *;";
 
-            var result = _repositoryBaseCategory.Insert(query, parameters);
+            return Insert(query, parameter);
 
-            return result;
         }
 
         public Category Update(Category obj)
         {
-            DynamicParameters parameters = new DynamicParameters();
-            parameters.Add("@Key",         obj.Key,         DbType.Guid);
-            parameters.Add("@Description", obj.Description, DbType.String);
-            parameters.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
+            DynamicParameters parameter = new DynamicParameters();
+
+            parameter.Add("@Key", obj.Key, DbType.Guid);
+            parameter.Add("@Description", obj.Description, DbType.String);
+            parameter.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
 
 
-            var query = "UPDATE public.category SET      "+
-                        "description = @Description,     "+
-                        "updated_date = @UpdatedDate     "+
-                        "WHERE key = @Key ";
+            var query = @"UPDATE public.category SET      "+
+                         "description  = @Description,    " +
+                         "updated_date = @UpdatedDate     " +
+                         "WHERE key = @Key  RETURNING *;";
 
-            var result = _repositoryBaseCategory.Insert(query, parameters);
+            var result = Update(query, parameter);
 
             return result;
         }

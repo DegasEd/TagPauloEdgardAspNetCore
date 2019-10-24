@@ -32,9 +32,7 @@ namespace TagShop.Repository
 
         public T ChangeStatus(string query, DynamicParameters parameters)
         {
-            return Conn.ExecuteScalar<T>(query, parameters);
-            var result = Conn.ExecuteScalar<T>(query, parameters);
-            return result;
+            return Conn.Query<T>(query, parameters).ToList().FirstOrDefault();            
         }
 
         public List<T> GetAll(string query, DynamicParameters parameters = null)
@@ -55,12 +53,12 @@ namespace TagShop.Repository
 
          public T Insert(string query, DynamicParameters parameters)
         {
-            return Conn.ExecuteScalar<T>(query, parameters);
+            return Conn.Query<T>(query, parameters).ToList().FirstOrDefault();
         }
 
         public T Update(string query, DynamicParameters parameters)
         {
-            return Conn.ExecuteScalar<T>(query, parameters);
+            return Conn.Query<T>(query, parameters).ToList().FirstOrDefault();
         }
 
         public void Dispose()
