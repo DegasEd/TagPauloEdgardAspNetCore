@@ -53,9 +53,16 @@ namespace TagShop.Api
             services.AddSingleton(mapperConfig.CreateMapper());
 
             services.AddSingleton<IConnectionFactory, ConnectionFactory>();
+            
+            // Registro de Injeção - Category
             services.AddSingleton<ICategoryRepository, CategoryRepository>();
             services.AddTransient<ICategoryBusiness, CategoryBusiness>();
             services.AddTransient<ICategoryServices, CategoryServices>();
+
+            // Registro de Injeção - Client
+            services.AddSingleton<IClientRepository, ClientRepository>();
+            services.AddTransient<IClientBusiness, ClientBusiness>();
+            services.AddTransient<IClientServices, ClientServices>();
 
             //services.AddTransient<IHttpFactory, HttpFactory>();
         }
