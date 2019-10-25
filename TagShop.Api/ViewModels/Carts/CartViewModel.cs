@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TagShop.Api.ViewModels.Customers;
 
-namespace TagShop.Api.ViewModels
+namespace TagShop.Api.ViewModels.Carts
 {
     public class CartViewModel
     {

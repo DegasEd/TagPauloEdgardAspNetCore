@@ -66,7 +66,8 @@ namespace TagShop.Api.Controllers
        /// <param name="category"></param>
        /// <returns></returns>
         [HttpPost]
-        public ActionResult<CategoryViewModel> Post(CategoryViewModel category)
+
+        public ActionResult<CategoryViewModel> Post(CreateCategoryViewModel category)
         {
             var resultService = _categoryServices.Insert(_mapper.Map<Category>(category));
 
@@ -81,7 +82,7 @@ namespace TagShop.Api.Controllers
         /// <returns></returns>
         [Route("update")]
         [HttpPut]
-        public ActionResult<CategoryViewModel> Put(CategoryViewModel category)
+        public ActionResult<CategoryViewModel> Put(CreateCategoryViewModel category)
         {
             var resultService = _categoryServices.Update(_mapper.Map<Category>(category));
 
