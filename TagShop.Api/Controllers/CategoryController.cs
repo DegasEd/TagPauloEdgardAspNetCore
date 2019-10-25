@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TagShop.Api.ViewModels;
+using TagShop.Api.ViewModels.Categories;
 using TagShop.Domain.Models;
 using TagShop.Services.Interfaces;
 
@@ -38,12 +39,12 @@ namespace TagShop.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<List<ResultCategoryViewModel>> GetAll()
+        public ActionResult<List<CategoryViewModel>> GetAll()
         {
             var resultService = _categoryServices.GetAll();
 
             
-            return _mapper.Map<List<ResultCategoryViewModel>>(resultService);
+            return _mapper.Map<List<CategoryViewModel>>(resultService);
         }
 
         /// <summary>
@@ -52,11 +53,11 @@ namespace TagShop.Api.Controllers
         /// <param name="key"></param>
         /// <returns></returns>
         [HttpGet("{key}")]
-        public ActionResult<ResultCategoryViewModel> Get(Guid key)
+        public ActionResult<CategoryViewModel> Get(Guid key)
         {
             var resultService = _categoryServices.GetById(key);
 
-            return _mapper.Map<ResultCategoryViewModel>(resultService);
+            return _mapper.Map<CategoryViewModel>(resultService);
         }
 
        /// <summary>
@@ -65,11 +66,11 @@ namespace TagShop.Api.Controllers
        /// <param name="category"></param>
        /// <returns></returns>
         [HttpPost]
-        public ActionResult<ResultCategoryViewModel> Post(CreateCategoryViewModel category)
+        public ActionResult<CategoryViewModel> Post(CreateCategoryViewModel category)
         {
             var resultService = _categoryServices.Insert(_mapper.Map<Category>(category));
 
-            return _mapper.Map<ResultCategoryViewModel>(resultService);
+            return _mapper.Map<CategoryViewModel>(resultService);
 
         }
 
@@ -80,11 +81,11 @@ namespace TagShop.Api.Controllers
         /// <returns></returns>
         [Route("update")]
         [HttpPut]
-        public ActionResult<ResultCategoryViewModel> Put(CreateCategoryViewModel category)
+        public ActionResult<CategoryViewModel> Put(CreateCategoryViewModel category)
         {
             var resultService = _categoryServices.Update(_mapper.Map<Category>(category));
 
-            return _mapper.Map<ResultCategoryViewModel>(resultService);
+            return _mapper.Map<CategoryViewModel>(resultService);
         }
 
         /// <summary>
@@ -94,11 +95,11 @@ namespace TagShop.Api.Controllers
         /// <returns></returns>
         [Route("changestatus")]
         [HttpPut]
-        public ActionResult<ResultCategoryViewModel> ChangeStatus(ResultCategoryViewModel category)
+        public ActionResult<CategoryViewModel> ChangeStatus(CategoryViewModel category)
         {
             var resultService = _categoryServices.ChangeStatus(_mapper.Map<Category>(category));
 
-            return _mapper.Map<ResultCategoryViewModel>(resultService);
+            return _mapper.Map<CategoryViewModel>(resultService);
         }
 
 

@@ -10,14 +10,14 @@ namespace TagShop.Api.ViewModels
     {
         public ProductViewModel()
         {
-            Category = new ResultCategoryViewModel();
+            Category = new CategoryViewModel();
             Images = new List<ImageViewModel>();
         }
 
         public long Id { get; protected set; }
         public Guid Key { get; private set; }
         public string ProductId { get; set; }
-        public ResultCategoryViewModel Category { get; set; }
+        public CategoryViewModel Category { get; set; }
         public string Description { get; set; }
         public string Detail { get; set; }
         public decimal Price { get; set; }

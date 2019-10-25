@@ -3,20 +3,19 @@ using System.Collections.Generic;
 using System.Text;
 using TagShop.Business.Interfaces;
 using TagShop.Domain.Models;
-using TagShop.Repository.Interfaces;
+using TagShop.Services.Interfaces;
 
-namespace TagShop.Business
+namespace TagShop.Services
 {
-    public class CartBusiness : ICartBusiness
+    public class CartServices : ICartServices
     {
 
-        private readonly ICartRepository _cartRepository;
+        private readonly ICartBusiness _cartBusiness;
 
-        public CartBusiness(ICartRepository cartRepository)
+        public CartServices(ICartBusiness cartBusiness)
         {
-            _cartRepository = cartRepository;
+            _cartBusiness = cartBusiness;
         }
-
         public Cart ChangeStatus(Cart obj)
         {
             throw new NotImplementedException();
@@ -27,14 +26,14 @@ namespace TagShop.Business
             throw new NotImplementedException();
         }
 
-        public List<Cart> GetById(Guid key)
+        public Cart GetById(Guid key)
         {
             throw new NotImplementedException();
         }
 
         public Cart Insert(Cart obj)
         {
-            return _cartRepository.Insert(obj);
+            return _cartBusiness.Insert(obj);
         }
 
         public Cart Update(Cart obj)
