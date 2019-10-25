@@ -38,7 +38,10 @@ namespace TagShop.Api.AutoMapper.Profiles
             #endregion
             CreateMap<ProductViewModel, Product>();
             CreateMap<CreateProductViewModel, Product>().ForMember(c => c.Description, d => d.MapFrom(map => map.Description))
-                                                        .ForMember(c => c.Detail, d => d.MapFrom(map => map.Detail));
+                                                        .ForMember(c => c.Detail, d => d.MapFrom(map => map.Detail))
+                                                        .ForMember(c => c.StockAmount, d => d.MapFrom(map => map.StockAmount))
+                                                        .ForMember(c => c.Price, d => d.MapFrom(map => map.Price))
+                                                        .ForMember(c => c.CategoryId, d => d.MapFrom(map => map.CategoryId));
         }
 
 

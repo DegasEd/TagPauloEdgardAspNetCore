@@ -27,7 +27,7 @@ namespace TagShop.Repository
             parameter.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
 
             var query = @"UPDATE public.product SET       " +
-                         "price        = @Price           " +
+                         "price        = @Price,         " +
                          "updated_date = @UpdatedDate     " +
                          "WHERE key = @Key  RETURNING *;  " ;
 
@@ -120,7 +120,7 @@ namespace TagShop.Repository
             parameter.Add("@UpdatedDate", obj.UpdatedDate, DbType.DateTime);
 
             var query = @"UPDATE public.product SET       " +
-                         "stock_amount = @StockAmount     " +
+                         "stock_amount = @StockAmount,    " +
                          "updated_date = @UpdatedDate     " +
                          "WHERE key = @Key  RETURNING *;  " ;
 
@@ -141,7 +141,7 @@ namespace TagShop.Repository
 
             var query = @"UPDATE public.product SET       " +
                          "description  = @Description,    " +
-                         "detail       = @Detail          " +
+                         "detail       = @Detail ,        " +
                          "updated_date = @UpdatedDate     " +
                          "WHERE key = @Key  RETURNING *;  " ;
 

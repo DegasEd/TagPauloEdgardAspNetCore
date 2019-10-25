@@ -37,7 +37,7 @@ namespace TagShop.Api.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public ActionResult<List<ProductViewModel>> GetAll(Guid categorykey, Guid productkey)
+        public ActionResult<List<ProductViewModel>> GetByKey(Guid categorykey, Guid productkey)
         {
             var resultService = _productServices.GetByKey(categorykey, productkey);
 

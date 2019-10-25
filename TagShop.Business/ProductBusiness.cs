@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TagShop.Business.Interfaces;
 using TagShop.Domain.Models;
@@ -27,11 +28,12 @@ namespace TagShop.Business
         {
             obj.ChangeStatus();
             obj.SetUpdateDate();
-            return _productRepository.ChangePrice(obj);
+            return _productRepository.ChangeStatus(obj);
         }
 
         public Product DecreaseStock(Product obj, int subtract)
         {
+            obj = GetById(obj.Key).ToList().FirstOrDefault();
             obj.SetUpdateDate();
             obj.StockAmount -= subtract;
             return _productRepository.ChangeStock(obj);
@@ -54,6 +56,7 @@ namespace TagShop.Business
 
         public Product IncreaseStock(Product obj, int add)
         {
+            obj = GetById(obj.Key).ToList().FirstOrDefault();
             obj.SetUpdateDate();
             obj.StockAmount += add;
             return _productRepository.ChangeStock(obj);
