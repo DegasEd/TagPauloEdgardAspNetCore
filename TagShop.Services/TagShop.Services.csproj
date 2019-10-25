@@ -4,4 +4,10 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TagShop.Business\TagShop.Business.csproj" />
+    <ProjectReference Include="..\TagShop.Domain\TagShop.Domain.csproj" />
+    <ProjectReference Include="..\TagShop.Repository\TagShop.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

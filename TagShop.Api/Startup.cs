@@ -6,6 +6,14 @@ using Microsoft.OpenApi.Models;
 using System;
 using System.IO;
 using System.Reflection;
+using TagShop.Api.AutoMapper;
+using TagShop.Business;
+using TagShop.Business.Interfaces;
+using TagShop.Repository;
+using TagShop.Repository.Interfaces;
+using TagShop.Repository.Utilities;
+using TagShop.Services;
+using TagShop.Services.Interfaces;
 
 namespace TagShop.Api
 {
@@ -32,18 +40,42 @@ namespace TagShop.Api
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            DependencyInjection(services);
         }
-    
 
 
-        //public void DependencyInjection(IServiceCollection services)
-        //{
-        //services.AddSingleton<ICustomerRepository, CustomerRepository>();
-        //services.AddTransient<ICustormeBusiness, CustomerBusiness>();
-        //services.AddTransient<ICustomerService, CustomerService>();
 
-        //services.AddTransient<IHttpFactory, HttpFactory>();
-        //}
+        public void DependencyInjection(IServiceCollection services)
+        {
+            // AutoMapper
+            var mapperConfig = AutoMapperConfig.RegisterMappings();
+            services.AddSingleton(mapperConfig.CreateMapper());
+
+            services.AddSingleton<IConnectionFactory, ConnectionFactory>();
+            
+            // Registro de Injeção - Category
+            services.AddSingleton<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICategoryBusiness, CategoryBusiness>();
+            services.AddTransient<ICategoryServices, CategoryServices>();
+
+            // Registro de Injeção - Client
+            services.AddSingleton<IClientRepository, ClientRepository>();
+            services.AddTransient<IClientBusiness, ClientBusiness>();
+            services.AddTransient<IClientServices, ClientServices>();
+
+            // Registro de Injeção - Product
+            services.AddSingleton<IProductRepository, ProductRepository>();
+            services.AddTransient<IProductBusiness, ProductBusiness>();
+            services.AddTransient<IProductServices, ProductServices>();
+
+            // Registro de Injeção - Cart
+            services.AddSingleton<ICartRepository, CartRepository>();
+            services.AddTransient<ICartBusiness, CartBusiness>();
+            services.AddTransient<ICartServices, CartServices>();
+
+            //services.AddTransient<IHttpFactory, HttpFactory>();
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -56,10 +88,10 @@ namespace TagShop.Api
                     "API TAG-Shop");
             });
 
-            //if (env.IsDevelopment())
-            //{
-            //    app.UseDeveloperExceptionPage();
-            //}
+            if (env.EnvironmentName == "Development")
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
             app.UseHttpsRedirection();
 
@@ -71,9 +103,6 @@ namespace TagShop.Api
             {
                 endpoints.MapControllers();
             });
-
-            
-
         }
     }
 }

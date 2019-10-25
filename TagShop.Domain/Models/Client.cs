@@ -1,13 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using TagShop.Domain.Abstract;
 
 namespace TagShop.Domain.Models
 {
-    public class Client : Entity
+    public class Client : BaseEntity
     {
         
-        public string ClientId { get; set; }
         public string Cpf { get; set; }
         public string Name { get; set; }
         public DateTime? BirthDate { get; set; }
@@ -18,8 +18,6 @@ namespace TagShop.Domain.Models
         public string State { get; set; }
         public string ZipCode { get; set; }
         public string Phone { get; set; }
-        public bool IsActive { get; set; }
-        public DateTime CreatedDate { get; set; }
-        public DateTime UpdatedDate { get; set; }
+
     }
 }
