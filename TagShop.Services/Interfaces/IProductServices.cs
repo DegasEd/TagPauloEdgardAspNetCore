@@ -10,9 +10,7 @@ namespace TagShop.Services.Interfaces
         Product Insert(Product obj);
         Product Update(Product obj);
         Product ChangeStatus(Product obj);
-        List<Product> GetAll();
-        List<Product> GetById(Guid key);
-        List<Product> GetByCategoryKey(Guid key);
+        List<Product> GetByKey(Guid categorykey, Guid productkey);
 
         Product IncreaseStock(Product obj, int add);
         Product DecreaseStock(Product obj, int subtract);

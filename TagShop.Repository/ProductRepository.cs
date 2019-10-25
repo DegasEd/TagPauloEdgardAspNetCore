@@ -69,7 +69,7 @@ namespace TagShop.Repository
             var query = "SELECT product.* "+
                         "FROM   public.product   as product, " +
                         "       public.category  as category " +
-                        "WHERE  product.category_id = category.id" +
+                        "WHERE  product.category_id = category.id " +
                         "AND    category.key        = @Key ";
 
             var result = GetAll(query, parameter);
@@ -82,9 +82,9 @@ namespace TagShop.Repository
             DynamicParameters parameter = new DynamicParameters();
             parameter.Add("@Key", key, DbType.Guid);
 
-            var query = "SELECT product.*                 " +
-                        "FROM   public.product  as product" +
-                        "WHERE  product.key     = @Key    " ;
+            var query = "SELECT product.*                  " +
+                        "FROM   public.product  as product " +
+                        "WHERE  product.key     = @Key     " ;
 
             var result = GetAll(query, parameter);
 
@@ -106,7 +106,7 @@ namespace TagShop.Repository
             parameter.Add("@StockAmount", obj.StockAmount, DbType.Int64);
 
             var query = @"INSERT INTO public.product(key, created_date, updated_date, is_active, category_id, description, detail, price, stock_amount) " +
-                        "VALUES (@Key, @CreatedDate, @UpdatedDate, @IsActive, @CategoryId, @Description, @Detail, @Price, @StockAmount) RETURNING *;";
+                        "VALUES (@Key, @CreatedDate, @UpdatedDate, @IsActive, @CategoryId, @Description, @Detail, @Price, @StockAmount) RETURNING *; ";
 
             return Insert(query, parameter);
         }

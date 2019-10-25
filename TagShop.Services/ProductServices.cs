@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TagShop.Business.Interfaces;
 using TagShop.Domain.Models;
@@ -7,7 +8,7 @@ using TagShop.Services.Interfaces;
 
 namespace TagShop.Services
 {
-    class ProductServices : IProductServices
+    public class ProductServices : IProductServices
     {
         private readonly IProductBusiness _productBusiness;
 
@@ -31,21 +32,26 @@ namespace TagShop.Services
             return _productBusiness.DecreaseStock(obj, subtract);
         }
 
-        public List<Product> GetAll()
+
+        public List<Product> GetByKey(Guid categorykey, Guid productkey)
         {
-            return _productBusiness.GetAll();
+            if (categorykey != Guid.Empty)
+            {
+                return _productBusiness.GetByCategoryKey(categorykey);
+            }
+            else if(productkey != Guid.Empty)
+            {
+
+                return _productBusiness.GetById(productkey);
+            }
+            else
+            {
+                return _productBusiness.GetAll();
+            }
+            
         }
 
-        public List<Product> GetByCategoryKey(Guid key)
-        {
-            return _productBusiness.GetByCategoryKey(key);
-        }
-
-        public List<Product> GetById(Guid key)
-        {
-            return _productBusiness.GetById(key);
-        }
-
+    
         public Product IncreaseStock(Product obj, int add)
         {
             return _productBusiness.IncreaseStock(obj, add);

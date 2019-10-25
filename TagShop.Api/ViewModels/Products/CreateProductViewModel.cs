@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using TagShop.Domain.Abstract;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace TagShop.Domain.Models
+namespace TagShop.Api.ViewModels.Products
 {
-    public class Product : BaseEntity
+    /// <summary>
+    /// 
+    /// </summary>
+    public class CreateProductViewModel
     {
-               
-        public long CategoryId { get; set; }
         public string Description { get; set; }
         public string Detail { get; set; }
+        public long CategoryId { get; set; }
         public long Price { get; set; }
         public int StockAmount { get; set; }
-        
-
     }
 }

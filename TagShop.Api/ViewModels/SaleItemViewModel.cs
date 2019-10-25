@@ -10,7 +10,7 @@ namespace TagShop.Api.ViewModels
         public long Id { get; protected set; }
         public Guid Key { get; private set; }
         public string SaleItemId { get; set; }
-        public ProductViewModel Product { get; set; }
+        public long ProductId { get; set; }
         public int Amount { get; set; }
         public decimal UnitaryValue { get; set; }
         public DateTime CreatedDate { get; private set; }
