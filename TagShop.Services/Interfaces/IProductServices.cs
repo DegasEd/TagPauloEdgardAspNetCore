@@ -11,7 +11,6 @@ namespace TagShop.Services.Interfaces
         Product Update(Product obj);
         Product ChangeStatus(Product obj);
         List<Product> GetByKey(Guid categorykey, Guid productkey);
-
         Product IncreaseStock(Product obj, int add);
         Product DecreaseStock(Product obj, int subtract);
         Product ChangePrice(Product obj, long newprice);

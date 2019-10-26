@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using TagShop.Domain.Abstract;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace TagShop.Domain.Models
+namespace TagShop.Api.ViewModels.Images
 {
-    public class Image : BaseEntity
+    public class CreateImageViewModel
     {
-        
         public long ProductId { get; set; }
         public byte[] Photo { get; set; }
-
-    }
+        }
 }

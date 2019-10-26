@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
-using TagShop.Api.ViewModels;
+using TagShop.Domain.Models;
 using TagShop.Api.ViewModels.Carts;
 using TagShop.Api.ViewModels.Categories;
 using TagShop.Api.ViewModels.Customers;
 using TagShop.Api.ViewModels.Products;
-using TagShop.Domain.Models;
+using TagShop.Api.ViewModels.Sales;
+using TagShop.Api.ViewModels.SalesItem;
+using TagShop.Api.ViewModels.Images;
 
 namespace TagShop.Api.AutoMapper.Profiles
 {
@@ -53,6 +55,20 @@ namespace TagShop.Api.AutoMapper.Profiles
 
             #endregion
 
+            CreateMap<CreateSaleViewModel, Sale>().ForMember(c => c.ClientId, d => d.MapFrom(map => map.ClientId))
+                                                  .ForMember(c => c.SaleDate, d => d.MapFrom(map => map.SaleDate))
+                                                  .ForMember(c => c.TotalPurchase, d => d.MapFrom(map => map.TotalPurchase))
+                                                  .ForMember(c => c.Icms, d => d.MapFrom(map => map.Icms))
+                                                  .ForMember(c => c.Pis, d => d.MapFrom(map => map.Pis))
+                                                  .ForMember(c => c.Cofins, d => d.MapFrom(map => map.Cofins));
+
+            CreateMap<CreateSaleItemViewModel, SaleItem>().ForMember(c => c.SaleId, d => d.MapFrom(map => map.SaleId))
+                                                          .ForMember(c => c.ProductId, d => d.MapFrom(map => map.ProductId))
+                                                          .ForMember(c => c.Amount, d => d.MapFrom(map => map.Amount))
+                                                          .ForMember(c => c.UnitaryValue, d => d.MapFrom(map => map.UnitaryValue));
+
+            CreateMap<CreateImageViewModel, Image>().ForMember(c => c.Photo, d => d.MapFrom(map => map.Photo))
+                                                    .ForMember(c => c.ProductId, d => d.MapFrom(map => map.ProductId));
         }
 
 
