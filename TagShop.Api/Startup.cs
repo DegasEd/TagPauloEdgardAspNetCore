@@ -74,6 +74,11 @@ namespace TagShop.Api
             services.AddTransient<ICartBusiness, CartBusiness>();
             services.AddTransient<ICartServices, CartServices>();
 
+            // Registro de Injeção - Sale
+            services.AddSingleton<ISaleRepository, SaleRepository>();
+            services.AddTransient<ISaleBusiness, SaleBusiness>();
+            services.AddTransient<ISaleServices, SaleServices>();
+
             //services.AddTransient<IHttpFactory, HttpFactory>();
         }
 

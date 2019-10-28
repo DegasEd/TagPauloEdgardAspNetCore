@@ -7,5 +7,7 @@ namespace TagShop.Repository.Interfaces
 {
     public interface ISaleItemRepository : IRepositoryBase<SaleItem>
     {
+        SaleItem Insert(SaleItem obj);
+        List<SaleItem> GetAll();
     }
 }

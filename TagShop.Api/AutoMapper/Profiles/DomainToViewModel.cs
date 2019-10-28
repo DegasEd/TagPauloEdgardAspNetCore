@@ -1,16 +1,12 @@
 ﻿using AutoMapper;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using TagShop.Api.ViewModels;
+using TagShop.Domain.Models;
 using TagShop.Api.ViewModels.Carts;
 using TagShop.Api.ViewModels.Categories;
 using TagShop.Api.ViewModels.Customers;
-using TagShop.Domain.Models;
-using TagShop.Api.ViewModels.Categories;
 using TagShop.Api.ViewModels.Products;
-
+using TagShop.Api.ViewModels.Sales;
+using TagShop.Api.ViewModels.SalesItem;
+using TagShop.Api.ViewModels.Images;
 
 namespace TagShop.Api.AutoMapper.Profiles
 {
@@ -43,7 +39,9 @@ namespace TagShop.Api.AutoMapper.Profiles
               .ForMember(c => c.UpdatedDate, d => d.MapFrom(map => map.UpdatedDate))
               .ForMember(c => c.IsActive, d => d.MapFrom(map => map.IsActive));
 
-
+            CreateMap<Sale, SaleViewModel>();
+            CreateMap<SaleItem, SaleItemViewModel>();
+            CreateMap<Image, ImageViewModel>();
         }
     }
 }

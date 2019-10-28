@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TagShop.Api.ViewModels.SalesItem;
+using TagShop.Domain.Models;
+using TagShop.Services.Interfaces;
 
 namespace TagShop.Api.Controllers
 {
@@ -14,53 +18,46 @@ namespace TagShop.Api.Controllers
     [ApiController]
     public class SaleItemController : BaseController
     {
+        private readonly ISaleItemServices _saleitemServices;
+        private readonly IMapper _mapper;
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="saleitemServices"></param>
+        /// <param name="mapper"></param>
+        public SaleItemController(ISaleItemServices saleitemServices, IMapper mapper)
+        {
+            _saleitemServices = saleitemServices;
+            _mapper = mapper;
+        }
+
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        public IEnumerable<string> GetAll()
+        public ActionResult<List<SaleItemViewModel>> GetAll()
         {
-            return new string[] { "value1", "value2" };
+            var resultService = _saleitemServices.GetAll();
+
+
+            return _mapper.Map<List<SaleItemViewModel>>(resultService);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="saleitem"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        public string Get8(int id)
-        {
-            return "value";
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="value"></param>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<SaleItemViewModel> Post(CreateSaleItemViewModel saleitem)
         {
+            var resultService = _saleitemServices.Insert(_mapper.Map<SaleItem>(saleitem));
+
+            return _mapper.Map<SaleItemViewModel>(resultService);
+
         }
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <param name="value"></param>
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
-        }
     }
 }

@@ -7,5 +7,7 @@ namespace TagShop.Repository.Interfaces
 {
     public interface IImageRepository : IRepositoryBase<Image>
     {
+        Image Insert(Image obj);
+        List<Image> GetAll();
     }
 }

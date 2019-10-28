@@ -1,17 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
-using TagShop.Domain.Abstract;
+using System.Linq;
+using System.Threading.Tasks;
 
-namespace TagShop.Domain.Models
+namespace TagShop.Api.ViewModels.SalesItem
 {
-    public class SaleItem : BaseEntity
+    public class CreateSaleItemViewModel
     {
-        
         public long SaleId { get; set; }
         public long ProductId { get; set; }
         public int Amount { get; set; }
         public long UnitaryValue { get; set; }
-
     }
 }
