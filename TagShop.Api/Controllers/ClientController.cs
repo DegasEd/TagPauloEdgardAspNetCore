@@ -64,9 +64,21 @@ namespace TagShop.Api.Controllers
         [HttpPost]
         public ActionResult<ClientViewModel> Post([FromBody] CreateClientViewModel client)
         {
-            var resultServices = _clientServices.Insert(_mapper.Map<Client>(client));
+            try
+            {
+                var resultServices = _clientServices.Insert(_mapper.Map<Client>(client));
 
-            return _mapper.Map<ClientViewModel>(resultServices);
+                if(!resultServices.Valid)
+                {
+                    return CustomBadRequest(resultServices.ValidationResult.Errors);
+                }
+
+                return Ok(_mapper.Map<ClientViewModel>(resultServices));
+            }
+            catch
+            {
+                return new StatusCodeResult(500);
+            }
         }
 
         /// <summary>

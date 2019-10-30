@@ -1,8 +1,10 @@
-﻿using System;
+﻿using FluentValidation;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using TagShop.Business.Interfaces;
 using TagShop.Domain.Models;
+using TagShop.Domain.Validations;
 using TagShop.Repository.Interfaces;
 
 namespace TagShop.Business
@@ -33,12 +35,31 @@ namespace TagShop.Business
 
         public Client Insert(Client obj)
         {
+            Validate(obj, Activator.CreateInstance<ClientValidator>());
+
+            if (!obj.Valid)
+            {
+                return obj;
+            }
+            
             return _clientRepository.Insert(obj);
         }
 
         public Client Update(Client obj)
         {
+            Validate(obj, Activator.CreateInstance<ClientValidator>());
+
+            if (!obj.Valid)
+            {
+                return obj;
+            }
+
             return _clientRepository.Update(obj);
+        }
+
+        private void Validate(Client obj, AbstractValidator<Client> validator)
+        {
+            obj.ValidationResult = validator.Validate(obj);
         }
     }
 }
