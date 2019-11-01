@@ -1,15 +1,14 @@
 ﻿using FluentValidation;
 using System;
 using System.Collections.Generic;
-using System.Text;
 using TagShop.Business.Interfaces;
+using TagShop.Business.Validations;
 using TagShop.Domain.Models;
-using TagShop.Domain.Validations;
 using TagShop.Repository.Interfaces;
 
 namespace TagShop.Business
 {
-    public class ClientBusiness : IClientBusiness
+    public class ClientBusiness : BaseValidator<Client> , IClientBusiness
     {
         private readonly IClientRepository _clientRepository;
 
@@ -35,7 +34,7 @@ namespace TagShop.Business
 
         public Client Insert(Client obj)
         {
-            Validate(obj, Activator.CreateInstance<ClientValidator>());
+            obj.ValidationResult = Validate(obj, Activator.CreateInstance<ClientValidator>());
 
             if (!obj.Valid)
             {
@@ -55,11 +54,6 @@ namespace TagShop.Business
             }
 
             return _clientRepository.Update(obj);
-        }
-
-        private void Validate(Client obj, AbstractValidator<Client> validator)
-        {
-            obj.ValidationResult = validator.Validate(obj);
         }
     }
 }
