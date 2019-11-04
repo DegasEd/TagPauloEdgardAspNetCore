@@ -35,20 +35,26 @@ namespace TagShop.Api.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<CartViewModel>> GetAll()
         {
-            return new List<CartViewModel>();
+            var resultService = _cartService.GetAll();
+
+            return _mapper.Map<List<CartViewModel>>(resultService);
         }
 
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="key"></param>
         /// <returns></returns>
-        [HttpGet("{id}")]
-        public ActionResult<CartViewModel> Get(int id)
+        [HttpGet("{key}")]
+        public ActionResult<CartViewModel> Get(Guid key)
         {
-            return new CartViewModel();
+            var resultService = _cartService.GetById(key);
+
+            return _mapper.Map<CartViewModel>(resultService);
         }
 
+        
+        
         /// <summary>
         /// 
         /// </summary>
@@ -68,20 +74,8 @@ namespace TagShop.Api.Controllers
             catch (Exception ex)
             {
 
-                return StatusCode(500, new {haserror = true, errormessage = "Erro interno, favor contactar administrador", data = ex.Message });
+                return StatusCode(500, new { haserror = true, errormessage = "Erro interno, favor contactar administrador", data = ex.Message });
             }
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="cart"></param>
-        /// <returns></returns>
-        [HttpPut]
-        [Route("update")]
-        public ActionResult<CartViewModel> Put([FromBody] CartViewModel cart)
-        {
-            return new CartViewModel();
         }
 
         /// <summary>
@@ -91,9 +85,11 @@ namespace TagShop.Api.Controllers
         /// <returns></returns>
         [Route("changestatus")]
         [HttpPut]
-        public ActionResult<CartViewModel> ChangeStatus(Guid key)
+        public ActionResult<ResultCreateCartViewModel> ChangeStatus(Guid key)
         {
-            return new CartViewModel();
+            var resultService = _cartService.ChangeStatus(key);
+
+            return _mapper.Map<ResultCreateCartViewModel>(resultService);
         }
 
     }

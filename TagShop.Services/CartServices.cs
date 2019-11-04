@@ -11,24 +11,27 @@ namespace TagShop.Services
     {
 
         private readonly ICartBusiness _cartBusiness;
+        private readonly IClientBusiness _clientBusinee;
 
         public CartServices(ICartBusiness cartBusiness)
         {
             _cartBusiness = cartBusiness;
         }
-        public Cart ChangeStatus(Cart obj)
+        public Cart ChangeStatus(Guid key)
         {
-            throw new NotImplementedException();
+            return _cartBusiness.ChangeStatus(key);
         }
 
         public List<Cart> GetAll()
         {
-            throw new NotImplementedException();
+            var resultBusiness = _cartBusiness.GetAll();
+
+            return _cartBusiness.GetAll();
         }
 
         public Cart GetById(Guid key)
         {
-            throw new NotImplementedException();
+            return _cartBusiness.GetById(key);
         }
 
         public Cart Insert(Cart obj)
@@ -36,9 +39,6 @@ namespace TagShop.Services
             return _cartBusiness.Insert(obj);
         }
 
-        public Cart Update(Cart obj)
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }

@@ -8,8 +8,7 @@ namespace TagShop.Services.Interfaces
     public interface ICartServices
     {
         Cart Insert(Cart obj);
-        Cart Update(Cart obj);
-        Cart ChangeStatus(Cart obj);
+        Cart ChangeStatus(Guid key);
         List<Cart> GetAll();
         Cart GetById(Guid key);
     }

@@ -2,8 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using TagShop.Api.ViewModels.CartItems;
+using TagShop.Domain.Models;
+using TagShop.Services.Interfaces;
 
 namespace TagShop.Api.Controllers
 {
@@ -14,12 +18,18 @@ namespace TagShop.Api.Controllers
     [ApiController]
     public class CartItemController : BaseController
     {
+
+        private readonly ICartItemServices _cartItemServices;
+        private readonly IMapper _mapper;
+
         /// <summary>
         /// 
         /// </summary>
-        public CartItemController()
+        /// <param name="cartItemServices"></param>
+        public CartItemController(ICartItemServices cartItemServices, IMapper mapper)
         {
-
+            _cartItemServices = cartItemServices;
+            _mapper = mapper;
         }
 
         /// <summary>
@@ -46,10 +56,14 @@ namespace TagShop.Api.Controllers
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="value"></param>
+        /// <param name="cartItem"></param>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult<CartItemViewModel> Post([FromBody] CreateCartItemViewModel cartItem)
         {
+            var resultService = _cartItemServices.Insert(_mapper.Map<CartItem>(cartItem));
+
+            return null;
+
         }
 
         /// <summary>
@@ -69,6 +83,18 @@ namespace TagShop.Api.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="cartKey"></param>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("getbycartkey")]
+        public void GetCartItemsByCartKey(Guid cartKey)
+        {
+
         }
     }
 }

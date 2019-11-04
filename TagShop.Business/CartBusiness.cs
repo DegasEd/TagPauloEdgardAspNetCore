@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Linq;
 using TagShop.Business.Interfaces;
 using TagShop.Domain.Models;
 using TagShop.Repository.Interfaces;
@@ -17,29 +17,24 @@ namespace TagShop.Business
             _cartRepository = cartRepository;
         }
 
-        public Cart ChangeStatus(Cart obj)
+        public Cart ChangeStatus(Guid key)
         {
-            throw new NotImplementedException();
+            return _cartRepository.ChangeStatus(key);
         }
 
         public List<Cart> GetAll()
         {
-            throw new NotImplementedException();
+            return _cartRepository.GetAll();
         }
 
-        public List<Cart> GetById(Guid key)
+        public Cart GetById(Guid key)
         {
-            throw new NotImplementedException();
+            return _cartRepository.GetById(key).ToList().FirstOrDefault();
         }
 
         public Cart Insert(Cart obj)
         {
             return _cartRepository.Insert(obj);
-        }
-
-        public Cart Update(Cart obj)
-        {
-            throw new NotImplementedException();
         }
     }
 }

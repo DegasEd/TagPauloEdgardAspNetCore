@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using TagShop.Api.ViewModels;
+using TagShop.Api.ViewModels.CartItems;
 using TagShop.Api.ViewModels.Carts;
 using TagShop.Api.ViewModels.Categories;
 using TagShop.Api.ViewModels.Customers;
@@ -53,6 +54,13 @@ namespace TagShop.Api.AutoMapper.Profiles
 
             #endregion
 
+            #region Mapeamento CartItem
+
+            CreateMap<CreateCartItemViewModel, CartItem>().ForMember(c => c.Product.Key, d => d.MapFrom(map => map.Productkey))
+                                                          .ForMember(c => c.Amount, d => d.MapFrom(map => map.Amount))
+                                                          .ForMember(c => c.Key, d => d.MapFrom(map => map.Cartkey));
+
+            #endregion
         }
 
 

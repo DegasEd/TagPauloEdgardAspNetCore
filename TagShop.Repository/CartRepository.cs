@@ -17,19 +17,42 @@ namespace TagShop.Repository
 
         }
 
-        public Cart ChangeStatus(Cart obj)
+        public Cart ChangeStatus(Guid key)
         {
-            throw new NotImplementedException();
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@Key", key, DbType.Guid);
+            parameters.Add("@IsActive", false, DbType.Boolean);
+            parameters.Add("@UpdatedDate", DateTime.Now, DbType.DateTime);
+
+
+            var query = "UPDATE public.cart SET  " +
+                        "is_active = @IsActive,      " +
+                        "updated_date = @UpdatedDate " +
+                        "WHERE key = @Key    RETURNING *; ";
+
+            return ChangeStatus(query, parameters);
         }
 
         public List<Cart> GetAll()
         {
-            throw new NotImplementedException();
+            var query = "SELECT * FROM public.cart ";
+
+            var result = GetAll(query);
+
+            return result;
         }
 
         public List<Cart> GetById(Guid key)
         {
-            throw new NotImplementedException();
+            DynamicParameters parameters = new DynamicParameters();
+            parameters.Add("@Key", key, DbType.Guid);
+
+
+            var query = "SELECT * FROM public.cart WHERE  key = @Key ";
+
+            var result = GetAll(query, parameters);
+
+            return result;
         }
 
         public Cart Insert(Cart obj)
@@ -51,11 +74,6 @@ namespace TagShop.Repository
 
 
             return Insert(query.ToString(), parameter);
-        }
-
-        public Cart Update(Cart obj)
-        {
-            throw new NotImplementedException();
         }
     }
 }

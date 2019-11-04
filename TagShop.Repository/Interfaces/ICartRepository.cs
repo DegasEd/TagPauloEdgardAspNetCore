@@ -8,8 +8,7 @@ namespace TagShop.Repository.Interfaces
     public interface ICartRepository
     {
         Cart Insert(Cart obj);
-        Cart Update(Cart obj);
-        Cart ChangeStatus(Cart obj);
+        Cart ChangeStatus(Guid key);
         List<Cart> GetAll();
         List<Cart> GetById(Guid key);
     }
