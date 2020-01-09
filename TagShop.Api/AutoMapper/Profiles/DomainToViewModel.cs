@@ -18,6 +18,9 @@ namespace TagShop.Api.AutoMapper.Profiles
     /// </summary>
     public class DomainToViewModel : Profile
     {
+        ///<sumary>
+        ///
+        ///</sumary>
         public DomainToViewModel()
         {
             #region Mapeamento Category
